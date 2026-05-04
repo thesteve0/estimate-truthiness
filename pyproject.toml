@@ -1,0 +1,62 @@
+[project]
+name = "estimate-truthiness"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "ruff",
+    "tomli>=2.4.1",
+    "tomli-w>=1.2.0",
+]
+
+[tool.uv]
+exclude-dependencies = [
+    "apex",
+    "cfgv",
+    "contourpy",
+    "cxxfilt",
+    "cycler",
+    "distlib",
+    "filelock",
+    "fonttools",
+    "fsspec",
+    "hypothesis",
+    "identify",
+    "iniconfig",
+    "jinja2",
+    "kiwisolver",
+    "markupsafe",
+    "matplotlib",
+    "mpmath",
+    "networkx",
+    "ninja",
+    "nodeenv",
+    "numpy",
+    "packaging",
+    "pandas",
+    "pillow",
+    "pip",
+    "platformdirs",
+    "pluggy",
+    "pre-commit",
+    "pygments",
+    "pyparsing",
+    "pytest",
+    "python-dateutil",
+    "python-discovery",
+    "pyyaml",
+    "ruff",
+    "scipy",
+    "setuptools",
+    "six",
+    "sortedcontainers",
+    "sympy",
+    "torch",
+    "torchaudio",
+    "torchvision",
+    "tqdm",
+    "triton",
+    "typing-extensions",
+    "uv",
+    "virtualenv",
+]
