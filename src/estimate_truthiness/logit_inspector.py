@@ -9,6 +9,7 @@ VOCAB_DIM = -1
 EXACT_STOP_TOKENS = {
     "<|im_end|>",      # OLMo's end-of-turn token
     "<|endoftext|>",   # GPT-style end-of-text token
+    "**ĊĊ",    # For some reason models doesn't always use stop punctuation and it should stop here with Mary had a little lamb
 }
 
 # Stop patterns: tokens ending with sentence-ending punctuation + newlines.
@@ -21,6 +22,7 @@ STOP_SUFFIXES = [
     "!Ċ",    # Exclamation + newline
     "?Ċ",    # Question + newline
     "Ġ.",    # Space + period
+
 ]
 
 
