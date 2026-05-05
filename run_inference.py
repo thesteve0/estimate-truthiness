@@ -44,11 +44,15 @@ def run_for_adapter(adapter, device):
     adapter.load(device)
 
     for prompt in TEST_PROMPTS:
-        print_model_header(adapter, prompt)
-
         input_ids = adapter.tokenize(prompt)
         steps = generate_with_logits(adapter, input_ids, TOP_K_PREDICTIONS)
 
+        # Construct full response from generated tokens
+        response = "".join(token for token, _ in steps).replace("Ġ", " ").strip()
+        # Remove stop token from response
+        response = response.replace("<|im_end|>", "").strip()
+
+        print_model_header(adapter, prompt, response)
         print_generation_steps(steps)
 
 

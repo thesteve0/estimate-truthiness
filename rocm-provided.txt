@@ -36,4 +36,4 @@ torchvision @ http://compute-artifactory.amd.com/artifactory/compute-pytorch-roc
 tqdm==4.67.1
 triton @ http://compute-artifactory.amd.com/artifactory/compute-pytorch-rocm/compute-rocm-rel-7.2/43/triton-3.5.1+rocm7.2.0.gita272dfa8-cp312-cp312-linux_x86_64.whl
 typing-extensions==4.15.0
-uv==0.10.8
+uv==0.10.7

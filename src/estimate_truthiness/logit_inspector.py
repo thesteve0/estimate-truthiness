@@ -5,8 +5,23 @@ from .adapters.base import ModelAdapter
 # The vocab dimension is always the last dimension in the logits tensor.
 VOCAB_DIM = -1
 
-# The instruct model emits this token when it has finished its turn.
-STOP_TOKENS = {"<|im_end|>"}
+# Exact stop tokens: model's end-of-turn markers
+EXACT_STOP_TOKENS = {
+    "<|im_end|>",      # OLMo's end-of-turn token
+    "<|endoftext|>",   # GPT-style end-of-text token
+}
+
+# Stop patterns: tokens ending with sentence-ending punctuation + newlines.
+# Be specific to avoid false positives like ":ĊĊ" (formatting, not sentence end).
+STOP_SUFFIXES = [
+    ".ĊĊ",   # Period + double newline
+    "!ĊĊ",   # Exclamation + double newline
+    "?ĊĊ",   # Question + double newline
+    ".Ċ",    # Period + newline
+    "!Ċ",    # Exclamation + newline
+    "?Ċ",    # Question + newline
+    "Ġ.",    # Space + period
+]
 
 
 def generate_with_logits(
@@ -61,7 +76,12 @@ def generate_with_logits(
         next_token_tensor = torch.tensor([[next_token_id]], device=current_ids.device)
         current_ids = torch.cat([current_ids, next_token_tensor], dim=1)
 
-        if generated_token in STOP_TOKENS:
+        # Check exact stop tokens
+        if generated_token in EXACT_STOP_TOKENS:
+            break
+
+        # Check suffix patterns
+        if any(generated_token.endswith(suffix) for suffix in STOP_SUFFIXES):
             break
 
     return generation_steps
