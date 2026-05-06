@@ -32,11 +32,15 @@ TOP_K_PREDICTIONS = 10
 TEST_PROMPTS = [
     # High-confidence: completion of a well-known nursery rhyme.
     # Expect dominant probability on "lamb" and the rest of the rhyme.
-    "Please complete this sentence: Mary had a little",
+    # "Please complete this sentence: Mary had a little",
     # Hallucination-prone: requires recall of a specific count.
     # Watch whether the model is uncertain (spread distribution)
     # or confidently wrong (peaked distribution on an incorrect number).
-    "In one sentence, please tell me how many steps lead up to my front door?",
+    # "In one sentence, please tell me how many steps lead up to my front door?",
+    #"Tell me about the famous development in AI that was discovered by Jan Le Cun in 2026",
+    "How many steps are there to the top of the statue of liberty", # There are 215 steps https://www.nps.gov/stli/planyourvisit/visiting-the-pedestal.htm
+    "How many steps are there to the top of the statue of liberty and is this more than the washington monument? Only answer the question - no extraneous discussion", # 896 in the washington monument,
+    "Which has more steps, the Statue of Liberty, the Washington Monument in D.C., or the Sears Tower in Chicago and how many more steps does it have than the monument with the least steps? Answer both questions - no extraneous discussion", # 896 in the washington monument,
 ]
 
 
